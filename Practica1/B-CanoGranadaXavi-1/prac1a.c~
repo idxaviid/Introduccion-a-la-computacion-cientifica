@@ -1,0 +1,57 @@
+/* CANO GRANADA XAVI 46793790Z */
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+
+int main(void) {
+
+    double **A = NULL, *x = NULL, *b = NULL, *y = NULL, tol;
+    int n, i, j;
+    int f = 0, c = 0;
+
+
+    printf("Numero de files y columnes de la matriu ? \n");
+    scanf("%d", &n);
+
+    A = (double **) malloc(n * sizeof (double *));
+
+    for (f = 0; f < n; f++) {
+        A[f] = (double *) malloc(n * sizeof (double));
+    }
+
+    x = (double *) malloc(n * sizeof ( double));
+    b = (double *) malloc(n * sizeof ( double));
+    y = (double *) malloc(n * sizeof ( double));
+
+    printf("Doneu els( %d x %d ) elements de la matriu A : \n", n, n);
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            printf("A[%d][%d]:\n", i, j);
+            scanf("%le", &A[i][j]);
+        }
+    }
+
+
+    printf("\nMatriu A:\n");
+    for (f = 0; f < n; f++) {
+        for (c = 0; c < n; c++)
+            printf(" %16.7e ", A[f][c]);
+        printf("\n");
+    }
+
+    printf("\nDoneu els %d elements del vector b : \n", n);
+    for (i = 0; i < n; i++)
+        scanf("%le", &b[i]);
+
+    printf("\nDoneu una tolerancia per al zero : \n");
+    scanf("%le", &tol);
+
+    resoltrisup(n, A, b, x, tol);
+    prodMatVec(n, A, b, y);
+    prodMatMat(n, A,B,C);
+
+
+    return (0);
+
+}
